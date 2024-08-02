@@ -1,4 +1,5 @@
-const baseUrl = 'http://localhost:3001';
+const baseUrl = 'https://fb-clone-backend.pushkar.live';
+const baseUrl2 = 'http://localhost:3002';
 
 const fetchData = async (
     url: string,
@@ -16,6 +17,8 @@ const fetchData = async (
             credentials: 'include',
         }) as any
 
+        console.log(res)
+
         return res;
 
     } else {
@@ -26,6 +29,8 @@ const fetchData = async (
             body: JSON.stringify(body),
             credentials: 'include',
         }) as any
+
+        console.log(res)
 
         return res;
 
