@@ -17,7 +17,7 @@ const fetchData = async (
             credentials: 'include',
         }) as any
 
-        console.log(res)
+        // console.log(res)
 
         return res;
 
@@ -30,7 +30,7 @@ const fetchData = async (
             credentials: 'include',
         }) as any
 
-        console.log(res)
+        // console.log(res)
 
         return res;
 

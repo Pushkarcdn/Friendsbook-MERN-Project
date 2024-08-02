@@ -1,6 +1,7 @@
-"use client"
+"use server"
 
-import router from "next/router"
+import { redirect } from "next/navigation"
+
 import fetchData from "./fetchData"
 
 const logOut = async () => {
@@ -9,7 +10,7 @@ const logOut = async () => {
 
     if (res.ok) {
 
-        router.push('/login')
+        redirect('/login')
 
     }
 

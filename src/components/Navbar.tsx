@@ -49,7 +49,7 @@ function Navbar() {
                 user &&
                 <div className='flex items-center gap-6'>
                     <Link href="/profile">{user?.name}</Link>
-                    <span onClick={() => logOut()}>Logout</span>
+                    <button onClick={() => logOut()}>Logout</button>
                 </div>
             }
 
