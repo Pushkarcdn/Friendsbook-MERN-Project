@@ -4,6 +4,7 @@ import Post from '@/components/Post'
 import ProfilePic from '@/components/ProfilePic'
 import ShowPosts from '@/components/ShowPosts'
 import fetchData from '@/lib/fetchData'
+import dynamic from 'next/dynamic'
 
 async function Page() {
 
@@ -26,7 +27,7 @@ async function Page() {
 
     }
 
-    await getData()
+    dynamic(() => getData() as any)
 
     return (
         <div className='bg-zinc-900 p-10 text-zinc-300 min-h-screen flex flex-col items-start gap-5'>
