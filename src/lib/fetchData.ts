@@ -2,9 +2,7 @@
 
 import { cookies } from 'next/headers';
 
-// const baseUrl = 'http://localhost:3002';
-const baseUrl = 'https://fb-clone-backend.pushkar.live';
-
+import { baseUrl } from "./config";
 
 const fetchData = async (
     url: string,

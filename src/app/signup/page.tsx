@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
 import fetchData from "@/lib/fetchData";
+import fetchDataClient from "@/lib/fetchDataClient";
 
 export default function Signup() {
 
@@ -21,7 +22,7 @@ export default function Signup() {
         // console.log("Form submitted", formData)
 
         try {
-            const res = await fetchData("/signup", "POST", formData) as any
+            const res = await fetchDataClient("/signup", "POST", formData) as any
 
             // console.log(res)
 

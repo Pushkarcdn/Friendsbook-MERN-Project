@@ -1,31 +1,32 @@
-"use client"
+
 
 import React from 'react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import fetchData from '@/lib/fetchData'
 import logOut from '@/lib/logout'
+import LogOutBtn from './LogOutBtn'
 
-function Navbar() {
+async function Navbar() {
 
-
-    const [user, setUser] = useState<any>()
+    let user: any;
+    let data;
 
     const getData = async () => {
 
-        const res = await fetchData('/profileDetails', 'GET')
+        let res = await fetchData('/profileDetails', 'GET')
 
-        const ress = await res.json()
+        let ress = await res.json()
 
-        if (ress.data) {
-            setUser(ress.data)
-        }
+        user = ress.data
+
+        if (user) data = JSON.parse(JSON.stringify(user))
+
+        // console.log(data)
 
     }
 
-    useEffect(() => {
-        getData()
-    }, [])
+    await getData()
 
     return (
         <div className='min-h-20 bg-zinc-800 text-zinc-300 flex items-center justify-between py-3 px-4 sm:px-12'>
@@ -49,7 +50,7 @@ function Navbar() {
                 user &&
                 <div className='flex items-center gap-6'>
                     <Link href="/profile">{user?.name}</Link>
-                    <button onClick={() => logOut()}>Logout</button>
+                    <LogOutBtn />
                 </div>
             }
 
