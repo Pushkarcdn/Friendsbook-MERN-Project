@@ -25,11 +25,11 @@ export default function Login() {
 
       let res = await fetchDataClient("/login", "POST", formData) as any
 
-      console.log(await res)
+      // console.log(await res)
 
       if (res.ok) {
-        router.push("/profile")
         console.log("Logged in")
+        router.push("/profile")
       }
 
     } catch (error) {

@@ -3,7 +3,7 @@
 import fetchDataClient from "@/lib/fetchDataClient"
 import { useContext, useState } from "react"
 
-export default function AdminLogin({ getData }: any) {
+export default function Login() {
 
   const [formData, setFormData] = useState({ content: "" })
 
@@ -20,7 +20,7 @@ export default function AdminLogin({ getData }: any) {
 
       const res = await fetchDataClient("/post", "POST", formData) as any
 
-      console.log(res)
+      // console.log(res)
       // setState(Math.random())
 
       setFormData({ content: "" })
