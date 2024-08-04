@@ -3,9 +3,9 @@
 import Link from "next/link"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import fetchData from "@/lib/fetchData"
+import fetchDataClient from "@/lib/fetchDataClient"
 
-export default function AdminLogin() {
+export default function Login() {
 
   const router = useRouter()
 
@@ -23,12 +23,13 @@ export default function AdminLogin() {
 
     try {
 
-      const res = await fetchData("/login", "POST", formData) as any
+      let res = await fetchDataClient("/login", "POST", formData) as any
 
-      // console.log(res)
+      console.log(await res)
 
       if (res.ok) {
         router.push("/profile")
+        console.log("Logged in")
       }
 
     } catch (error) {

@@ -1,9 +1,9 @@
 "use client"
 
-import fetchData from "@/lib/fetchData"
-import { useState } from "react"
+import fetchDataClient from "@/lib/fetchDataClient"
+import { useContext, useState } from "react"
 
-export default function AdminLogin({ newPost, setNewPost }: any) {
+export default function AdminLogin({ getData }: any) {
 
   const [formData, setFormData] = useState({ content: "" })
 
@@ -18,12 +18,12 @@ export default function AdminLogin({ newPost, setNewPost }: any) {
 
     try {
 
-      const res = await fetchData("/post", "POST", formData) as any
+      const res = await fetchDataClient("/post", "POST", formData) as any
 
-      // console.log(res)
-      setNewPost(newPost + 1)
+      console.log(res)
+      // setState(Math.random())
 
-      formData.content = ""
+      setFormData({ content: "" })
 
     } catch (error) {
       console.log(error)

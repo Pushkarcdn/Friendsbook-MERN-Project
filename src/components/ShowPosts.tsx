@@ -1,15 +1,21 @@
 "use client"
 
 import React, { useEffect, useState } from 'react'
-import fetchData from '@/lib/fetchData'
+import fetchDataClient from '@/lib/fetchDataClient'
 
-function ShowPosts({ user }: any) {
+function ShowPosts({ data }: { data: any }) {
+
+    // console.log(data)
+
+    const user = data
+
+    // console.log(user)
 
     const [posts, setPosts] = useState<any>()
 
     const getPosts = async () => {
 
-        const res = await fetchData(`/posts/${user?.email}`, "GET") as any
+        const res = await fetchDataClient(`/posts/${user?.email}`, "GET") as any
 
         if (!res.ok) {
             return
@@ -17,7 +23,7 @@ function ShowPosts({ user }: any) {
 
         const ress = await res.json()
 
-        // console.log(ress.data)
+        // console.log(ress)
 
         setPosts(ress.data)
 
@@ -32,7 +38,7 @@ function ShowPosts({ user }: any) {
 
     const handleLike = async (id: string) => {
 
-        const res = await fetchData(`/like`, "PUT", { id }) as any
+        const res = await fetchDataClient(`/like`, "PUT", { id }) as any
 
         getPosts()
 
@@ -40,7 +46,7 @@ function ShowPosts({ user }: any) {
 
     const handleDelete = async (id: string) => {
 
-        const res = await fetchData(`/deletePost/${id}`, "DELETE", { id }) as any
+        const res = await fetchDataClient(`/deletePost/${id}`, "DELETE", { id }) as any
 
         getPosts()
 
