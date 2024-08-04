@@ -1,6 +1,6 @@
 "use client"
 
-import { baseUrl } from '@/lib/config';
+// import { baseUrl } from '@/lib/config';
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image';
 import fetchDataClient from '@/lib/fetchDataClient';
@@ -42,7 +42,7 @@ function ProfilePic() {
 
         formData.append('dp', file)
 
-        const res = await fetch(baseUrl + '/dpchange', {
+        const res = await fetch('https://fb-clone-backend.pushkar.live' + '/dpchange', {
             method: 'POST',
             body: formData,
             credentials: 'include'
@@ -55,7 +55,7 @@ function ProfilePic() {
     return (
         <div className='flex flex-col gap-3'>
 
-            {user?.profilePic && <Image src={`${baseUrl}/images/profile-pics/${user?.profilePic}`} alt={''} width={80} height={80} className='rounded-full aspect-square' />}
+            {user?.profilePic && <Image src={`${'https://fb-clone-backend.pushkar.live'}/images/profile-pics/${user?.profilePic}`} alt={''} width={80} height={80} className='rounded-full aspect-square' />}
 
             <form className='flex flex-col items-start justify-center gap-3 text-xs' encType="multipart/form-data" onSubmit={handleDPChange}>
                 <input type="file" name="dp" id="" onChange={handleFileChange} />

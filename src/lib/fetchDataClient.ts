@@ -1,4 +1,6 @@
-import { baseUrl } from "./config";
+"use client"
+
+// import { baseUrl } from "./config";
 
 export const fetchDataClient = async (
     url: string,
@@ -31,7 +33,7 @@ export const fetchDataClient = async (
 
     } else {
 
-        const res = await fetch(`${baseUrl}${url}`, {
+        const res = await fetch(`${'https://fb-clone-backend.pushkar.live'}${url}`, {
             method,
             headers: { "content-Type": 'application/json', ...headers },
             body: JSON.stringify(body),

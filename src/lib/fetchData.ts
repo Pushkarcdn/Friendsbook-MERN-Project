@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers';
 
-import { baseUrl } from "./config";
+// import { baseUrl } from "./config";
 
 const fetchData = async (
     url: string,
