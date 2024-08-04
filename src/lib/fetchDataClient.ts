@@ -1,5 +1,5 @@
-const baseUrl = 'http://localhost:3002';
-// const baseUrl = 'https://fb-clone-backend.pushkar.live';
+// const baseUrl = 'http://localhost:3002';
+const baseUrl = 'https://fb-clone-backend.pushkar.live';
 
 
 export const fetchDataClient = async (
