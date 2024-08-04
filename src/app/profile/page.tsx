@@ -12,6 +12,8 @@ async function Page() {
 
     const getData = async () => {
 
+        "use server"
+
         let res = await fetchData('/profileDetails', 'GET')
 
         let ress = await res.json()

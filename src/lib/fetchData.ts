@@ -18,6 +18,11 @@ const fetchData = async (
     const myCookie = cookieStore.get('token');
     console.log("mycookie is: ", myCookie)
 
+    if (!myCookie) {
+        console.error("Token cookie not found");
+        // return;
+    }
+
     const Cookie = `token=${myCookie?.value}`
 
     console.log(Cookie, typeof Cookie)
@@ -36,7 +41,7 @@ const fetchData = async (
 
     } else {
 
-        const res = await fetch(`${baseUrl}${url}`, {
+        const res = await fetch(`${'https://fb-clone-backend.pushkar.live'}${url}`, {
             method,
             headers: { "content-Type": 'application/json', ...headers },
             body: JSON.stringify(body),
