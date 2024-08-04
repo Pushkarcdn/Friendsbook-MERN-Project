@@ -18,7 +18,7 @@ async function Page() {
 
         user = ress.data
 
-        // console.log(ress)
+        console.log(ress)
 
         data = JSON.parse(JSON.stringify(user))
 
