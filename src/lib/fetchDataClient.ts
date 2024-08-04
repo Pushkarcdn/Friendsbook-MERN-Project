@@ -19,7 +19,7 @@ export const fetchDataClient = async (
 
     if (method.toLowerCase() === 'get') {
 
-        const res = await fetch(`${baseUrl}${url}`, {
+        const res = await fetch(`${'https://fb-clone-backend.pushkar.live'}${url}`, {
             method,
             headers: { "content-Type": 'application/json' },
             credentials: 'include',
