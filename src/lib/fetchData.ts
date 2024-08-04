@@ -13,14 +13,14 @@ const fetchData = async (
     "use server"
 
     const cookieStore = cookies();
-    // console.log("running fetchData")
+    console.log("running fetchData")
 
     const myCookie = cookieStore.get('token');
-    // console.log(myCookie)
+    console.log("mycookie is: ", myCookie)
 
     const Cookie = `token=${myCookie?.value}`
 
-    // console.log(Cookie, typeof Cookie)
+    console.log(Cookie, typeof Cookie)
 
     if (method.toLowerCase() === 'get') {
 
