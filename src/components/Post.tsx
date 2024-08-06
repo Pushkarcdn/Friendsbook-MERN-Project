@@ -1,9 +1,10 @@
 "use client"
 
 import fetchDataClient from "@/lib/fetchDataClient"
-import { useContext, useState } from "react"
+import { get } from "https"
+import { useState } from "react"
 
-export default function Login() {
+export default function Post({ posts, getPosts }: any) {
 
   const [formData, setFormData] = useState({ content: "" })
 
@@ -14,16 +15,16 @@ export default function Login() {
   const handleSubmit = async (e: any) => {
 
     e.preventDefault()
-    // console.log("Form submitted", formData)
 
     try {
 
       const res = await fetchDataClient("/post", "POST", formData) as any
 
-      // console.log(res)
-      // setState(Math.random())
+      if (res.ok) {
+        getPosts()
+        setFormData({ content: "" })
+      }
 
-      setFormData({ content: "" })
 
     } catch (error) {
       console.log(error)

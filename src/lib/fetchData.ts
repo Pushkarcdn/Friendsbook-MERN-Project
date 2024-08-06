@@ -1,60 +1,60 @@
-"use server"
+// "use server"
 
-import { cookies } from 'next/headers';
+// import { cookies } from 'next/headers';
 
 // import { baseUrl } from "./config";
 
-const fetchData = async (
-    url: string,
-    method = "GET" as string,
-    body = {} as any,
-    headers = {} as any) => {
+// const fetchData = async (
+//     url: string,
+//     method = "GET" as string,
+//     body = {} as any,
+//     headers = {} as any) => {
 
-    "use server"
+//     "use server"
 
-    const cookieStore = cookies();
-    console.log("running fetchData")
+//     const cookieStore = cookies();
+//     // console.log("running fetchData")
 
-    const myCookie = cookieStore.get('token');
-    console.log("mycookie is: ", myCookie)
+//     const myCookie = cookieStore.get('token');
+//     // console.log("mycookie is: ", myCookie)
 
-    if (!myCookie) {
-        console.error("Token cookie not found");
-        // return;
-    }
+//     if (!myCookie) {
+//         console.error("Token cookie not found");
+//         // return;
+//     }
 
-    const Cookie = `token=${myCookie?.value}`
+//     const Cookie = `token=${myCookie?.value}`
 
-    console.log(Cookie, typeof Cookie)
+//     // console.log(Cookie, typeof Cookie)
 
-    if (method.toLowerCase() === 'get') {
+//     if (method.toLowerCase() === 'get') {
 
-        const res = await fetch(`${'https://fb-clone-backend.pushkar.live'}${url}`, {
-            method,
-            headers: { "content-Type": 'application/json', Cookie, ...headers },
-            credentials: 'include',
-        }) as any
+//         const res = await fetch(`${baseUrl}${url}`, {
+//             method,
+//             headers: { "content-Type": 'application/json', Cookie, ...headers },
+//             credentials: 'include',
+//         }) as any
 
-        // const data = await res.json()
+//         // const data = await res.json()
 
-        return res;
+//         return res;
 
-    } else {
+//     } else {
 
-        const res = await fetch(`${'https://fb-clone-backend.pushkar.live'}${url}`, {
-            method,
-            headers: { "content-Type": 'application/json', ...headers },
-            body: JSON.stringify(body),
-            credentials: 'include',
-        }) as any
+//         const res = await fetch(`${baseUrl}${url}`, {
+//             method,
+//             headers: { "content-Type": 'application/json', ...headers },
+//             body: JSON.stringify(body),
+//             credentials: 'include',
+//         }) as any
 
-        // const data = await res.json()
+//         // const data = await res.json()
 
-        return res;
+//         return res;
 
-    }
+//     }
 
-}
+// }
 
 
-export default fetchData;
+// export default fetchData;

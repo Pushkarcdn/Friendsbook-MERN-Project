@@ -1,33 +1,42 @@
-"use server"
+"use client"
 
 import Post from '@/components/Post'
 import ProfilePic from '@/components/ProfilePic'
 import ShowPosts from '@/components/ShowPosts'
-import fetchData from '@/lib/fetchData'
-import dynamic from 'next/dynamic'
+import fetchDataClient from '@/lib/fetchDataClient'
+import { get } from 'http'
+import { useEffect, useState } from 'react'
 
-async function Page() {
+function Page() {
 
-    let user: any;
-    let data;
+    const [user, setUser] = useState<any>()
+    const [posts, setPosts] = useState<any>()
 
-    const getData = async () => {
+    const getUser = async () => {
 
-        "use server"
+        let res = await fetchDataClient('/profileDetails', 'GET')
 
-        let res = await fetchData('/profileDetails', 'GET')
+        let ress = await res?.json()
 
-        let ress = await res.json()
+        setUser(ress?.data)
 
-        user = ress.data
-
-        console.log(ress)
-
-        data = JSON.parse(JSON.stringify(user))
+        getPosts()
 
     }
 
-    dynamic(() => getData() as any)
+    const getPosts = async () => {
+
+        const res = await fetchDataClient(`/posts/${user?.email}`, "GET") as any
+
+        const ress = await res?.json()
+
+        setPosts(ress?.data)
+
+    }
+
+    useEffect(() => {
+        getUser()
+    }, [])
 
     return (
         <div className='bg-zinc-900 p-10 text-zinc-300 min-h-screen flex flex-col items-start gap-5'>
@@ -45,9 +54,9 @@ async function Page() {
 
             <h2 className='text-2xl font-semibold mt-4'>New post</h2>
 
-            <Post />
+            <Post posts={posts} getPosts={getPosts} />
 
-            <ShowPosts data={data} />
+            <ShowPosts user={user} posts={posts} getPosts={getPosts} />
 
         </div>
     )

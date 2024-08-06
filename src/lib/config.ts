@@ -1,25 +1,23 @@
-// export default function getBaseUrl(req: any) {
+export default function getUrl() {
 
-//     let reqq = req
+    let baseUrl = '';
 
-//     let baseUrl = '';
+    if (process.env.NODE_ENV === 'production') {
 
-//     if (process.env.NODE_ENV === 'production') {
+        // baseUrl = 'http://localhost:3002';
+        baseUrl = 'https://fb-clone-backend.pushkar.live';
 
-//         // baseUrl = 'http://localhost:3002';
-//         baseUrl = 'https://fb-clone-backend.pushkar.live';
+    } else if (process.env.NODE_ENV === 'development') {
 
-//     } else if (process.env.NODE_ENV === 'development') {
+        // baseUrl = 'https://fb-clone-backend.pushkar.live';
+        baseUrl = 'http://localhost:3002';
 
-//         // baseUrl = 'https://fb-clone-backend.pushkar.live';
-//         baseUrl = 'http://localhost:3002';
+    }
 
-//     }
+    // console.log(baseUrl);
 
-//     console.log(baseUrl);
+    return baseUrl;
 
-//     return baseUrl;
+};
 
-// };
-
-// export const baseUrl = 'https://fb-clone-backend.pushkar.live'
+export const baseUrl = getUrl()

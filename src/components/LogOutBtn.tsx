@@ -1,11 +1,12 @@
 "use client"
 
-import logOut from '@/lib/logout'
+import LogOut from '@/lib/logout'
 import React from 'react'
 
 function LogOutBtn() {
+
     return (
-        <button onClick={() => logOut()}>Logout</button>
+        <button onClick={() => LogOut()}>Logout</button>
     )
 }
 

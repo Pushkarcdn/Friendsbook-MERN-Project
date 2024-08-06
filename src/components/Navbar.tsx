@@ -1,32 +1,23 @@
+"use client"
 
-
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
-import { useState, useEffect } from 'react'
-import fetchData from '@/lib/fetchData'
-import logOut from '@/lib/logout'
 import LogOutBtn from './LogOutBtn'
+import fetchDataClient from '@/lib/fetchDataClient'
 
-async function Navbar() {
+function Navbar() {
 
-    let user: any;
-    let data;
+    const [user, setUser] = useState<any>()
 
     const getData = async () => {
 
-        let res = await fetchData('/profileDetails', 'GET')
+        let res = await fetchDataClient('/profileDetails', 'GET')
 
-        let ress = await res.json()
+        let ress = await res?.json()
 
-        user = ress.data
-
-        if (user) data = JSON.parse(JSON.stringify(user))
-
-        // console.log(data)
+        setUser(ress?.data)
 
     }
-
-    await getData()
 
     return (
         <div className='min-h-20 bg-zinc-800 text-zinc-300 flex items-center justify-between py-3 px-4 sm:px-12'>

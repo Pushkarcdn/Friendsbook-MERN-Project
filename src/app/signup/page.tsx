@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation"
 import Link from "next/link"
 import { useState } from "react"
-import fetchData from "@/lib/fetchData";
 import fetchDataClient from "@/lib/fetchDataClient";
 
 export default function Signup() {
@@ -19,12 +18,9 @@ export default function Signup() {
     const handleSubmit = async (e: any) => {
 
         e.preventDefault()
-        // console.log("Form submitted", formData)
 
         try {
             const res = await fetchDataClient("/signup", "POST", formData) as any
-
-            // console.log(res)
 
             if (res.ok) {
 

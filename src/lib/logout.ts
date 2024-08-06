@@ -1,19 +1,20 @@
-"use server"
+"use client"
 
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
+import fetchDataClient from "./fetchDataClient"
 
-import fetchData from "./fetchData"
+const LogOut = async () => {
 
-const logOut = async () => {
+    const router = useRouter()
 
-    const res = await fetchData('/logout', 'GET')
+    const res = await fetchDataClient('/logout', 'GET')
 
     if (res.ok) {
 
-        redirect('/login')
+        router.push('/login')
 
     }
 
 }
 
-export default logOut
+export default LogOut
