@@ -1,8 +1,7 @@
 "use client"
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import LogOutBtn from './LogOutBtn'
 import fetchDataClient from '@/lib/fetchDataClient'
 
 function Navbar() {
@@ -19,6 +18,12 @@ function Navbar() {
 
     }
 
+    useEffect(() => {
+
+        getData()
+
+    }, [])
+
     return (
         <div className='min-h-20 bg-zinc-800 text-zinc-300 flex items-center justify-between py-3 px-4 sm:px-12'>
 
@@ -30,7 +35,6 @@ function Navbar() {
 
                 user && <div className='flex items-center gap-6 sm:gap-10'>
 
-
                     <Link href="/profile">New Post</Link>
 
                 </div>
@@ -41,7 +45,7 @@ function Navbar() {
                 user &&
                 <div className='flex items-center gap-6'>
                     <Link href="/profile">{user?.name}</Link>
-                    <LogOutBtn />
+                    <Link href="/logout">Logout</Link>
                 </div>
             }
 

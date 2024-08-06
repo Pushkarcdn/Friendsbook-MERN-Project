@@ -20,8 +20,6 @@ function Page() {
 
         setUser(ress?.data)
 
-        getPosts()
-
     }
 
     const getPosts = async () => {
@@ -37,6 +35,10 @@ function Page() {
     useEffect(() => {
         getUser()
     }, [])
+
+    useEffect(() => {
+        if (user) getPosts()
+    }, [user])
 
     return (
         <div className='bg-zinc-900 p-10 text-zinc-300 min-h-screen flex flex-col items-start gap-5'>
