@@ -4,8 +4,8 @@ export default function getUrl() {
 
     if (process.env.NODE_ENV === 'production') {
 
-        baseUrl = 'http://localhost:3002';
-        // baseUrl = 'https://fb-clone-backend.pushkar.live';
+        // baseUrl = 'http://localhost:3002';
+        baseUrl = 'https://fb-clone-backend.pushkar.live';
 
     } else if (process.env.NODE_ENV === 'development') {
 
