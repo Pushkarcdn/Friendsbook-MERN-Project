@@ -24,7 +24,7 @@ function Page() {
 
     const getPosts = async () => {
 
-        const res = await fetchDataClient(`/posts/${user?.email}`, "GET") as any
+        const res = await fetchDataClient(`/posts/${user.email}`, "GET") as any
 
         const ress = await res?.json()
 
@@ -37,7 +37,7 @@ function Page() {
     }, [])
 
     useEffect(() => {
-        if (user) getPosts()
+        if (user?.email) getPosts()
     }, [user])
 
     return (

@@ -16,7 +16,20 @@ function ProfilePic() {
 
         const res = await fetchDataClient('/profileDetails', 'GET')
 
-        const ress = await res.json()
+        let ress = await res.json()
+
+        let buffer = ress.data.profilePic
+
+        buffer = buffer.toString('base64')
+
+        // console.log(buffer)
+
+        const dataUrl = `data:image/jpeg;base64,${buffer}`; // Adjust MIME type as needed
+        // console.log("data: " + dataUrl)
+
+        ress.data.profilePic = dataUrl
+
+        // console.log(ress.data)
 
         setUser(ress.data)
 
@@ -56,7 +69,7 @@ function ProfilePic() {
     return (
         <div className='flex flex-col gap-3'>
 
-            {user?.profilePic && <Image src={`${baseUrl}/images/profile-pics/${user?.profilePic}`} alt={''} width={80} height={80} className='rounded-full aspect-square' />}
+            {user?.profilePic && <Image src={user?.profilePic} alt={''} width={80} height={80} className='rounded-full aspect-square object-cover object-center' />}
 
             <form className='flex flex-col items-start justify-center gap-3 text-xs' encType="multipart/form-data" onSubmit={handleDPChange}>
                 <input type="file" name="dp" id="" onChange={handleFileChange} />
