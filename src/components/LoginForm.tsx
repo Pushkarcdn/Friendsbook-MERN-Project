@@ -23,7 +23,7 @@ export default function Login() {
 
     try {
 
-      let res = await fetchDataClient("/login", "POST", formData) as any
+      let res = await fetchDataClient("/user/login", "POST", formData) as any
 
       // console.log(await res)
 

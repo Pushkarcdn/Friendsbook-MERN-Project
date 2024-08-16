@@ -6,7 +6,7 @@ function ShowPosts({ user, posts, getPosts }: any) {
 
     const handleLike = async (id: string) => {
 
-        const res = await fetchDataClient(`/like`, "PUT", { id }) as any
+        const res = await fetchDataClient(`/post/like`, "PUT", { id }) as any
 
         if (res.ok) getPosts()
 
@@ -14,7 +14,7 @@ function ShowPosts({ user, posts, getPosts }: any) {
 
     const handleDelete = async (id: string) => {
 
-        const res = await fetchDataClient(`/deletePost/${id}`, "DELETE", { id }) as any
+        const res = await fetchDataClient(`/post/${id}`, "DELETE", { id }) as any
 
         if (res.ok) getPosts()
 

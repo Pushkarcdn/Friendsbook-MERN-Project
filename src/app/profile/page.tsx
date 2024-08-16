@@ -14,7 +14,7 @@ function Page() {
 
     const getUser = async () => {
 
-        let res = await fetchDataClient('/profileDetails', 'GET')
+        let res = await fetchDataClient('/user', 'GET')
 
         let ress = await res?.json()
 
@@ -24,7 +24,7 @@ function Page() {
 
     const getPosts = async () => {
 
-        const res = await fetchDataClient(`/posts/${user.email}`, "GET") as any
+        const res = await fetchDataClient(`/post/${user.email}`, "GET") as any
 
         const ress = await res?.json()
 

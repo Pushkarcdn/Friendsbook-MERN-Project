@@ -10,7 +10,7 @@ export default function Logout() {
 
     const logout = async () => {
 
-        await fetchDataClient('/logout', 'GET')
+        await fetchDataClient('/user/logout', 'GET')
 
         location.href = '/login'
 

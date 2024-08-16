@@ -10,7 +10,7 @@ function Navbar() {
 
     const getData = async () => {
 
-        let res = await fetchDataClient('/profileDetails', 'GET')
+        let res = await fetchDataClient('/user', 'GET')
 
         let ress = await res?.json()
 

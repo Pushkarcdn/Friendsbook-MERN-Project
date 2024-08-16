@@ -20,7 +20,7 @@ export default function Signup() {
         e.preventDefault()
 
         try {
-            const res = await fetchDataClient("/signup", "POST", formData) as any
+            const res = await fetchDataClient("/user/signup", "POST", formData) as any
 
             if (res.ok) {
 

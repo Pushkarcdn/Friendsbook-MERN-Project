@@ -14,13 +14,13 @@ function ProfilePic() {
 
     const getUser = async () => {
 
-        const res = await fetchDataClient('/profileDetails', 'GET')
+        const res = await fetchDataClient('/user', 'GET')
 
         let ress = await res.json()
 
-        let buffer = ress.data.profilePic
+        let buffer = ress?.data?.profilePic
 
-        buffer = buffer.toString('base64')
+        buffer = buffer?.toString('base64')
 
         // console.log(buffer)
 
@@ -56,7 +56,7 @@ function ProfilePic() {
 
         formData.append('dp', file)
 
-        const res = await fetch(baseUrl + '/dpchange', {
+        const res = await fetch(baseUrl + '/user/profilePic', {
             method: 'POST',
             body: formData,
             credentials: 'include'
